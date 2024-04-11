@@ -4,6 +4,8 @@ This Chrome extension is designed for CSMiddler users to improve their trading e
 
 ## Store download links
 
+Coming soon
+
 ## Features
 
 - Option to enable `access token usage` for trade-verification purposes on CSMiddler.
