@@ -1,0 +1,63 @@
+{
+  "name": "extension",
+  "version": "1.0.0",
+  "displayName": "CSMiddler Helper",
+  "description": "Extension for CSMiddler.com users",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csmiddler/extension.git"
+  },
+  "author": "@ludvigbartholdsson (Ludvig Bartholdsson)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/csmiddler/extension/issues"
+  },
+  "homepage": "https://github.com/csmiddler/extension#readme",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "plasmo": "0.85.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "4.1.1",
+    "@types/chrome": "0.0.258",
+    "@types/node": "20.11.5",
+    "@types/react": "18.2.48",
+    "@types/react-dom": "18.2.18",
+    "prettier": "3.2.4",
+    "typescript": "5.3.3"
+  },
+  "manifest": {
+    "permissions": [
+      "storage",
+      "scripting",
+      "cookies",
+      "activeTab"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "*.js",
+          "*.ts"
+        ],
+        "matches": [
+          "<all_urls>"
+        ]
+      }
+    ],
+    "host_permissions": [
+      "*://*.csmiddler.com/*",
+      "*://steamcommunity.com/",
+      "*://*.steamcommunity.com/id/*/inventory*",
+      "*://*.steamcommunity.com/id/*/tradehistory*",
+      "*://*.steamcommunity.com/profiles/*/inventory*"
+    ],
+    "content_scripts": []
+  }
+}
