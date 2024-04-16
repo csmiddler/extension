@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(async function(message) {
                     console.debug("No correlationId found. Exiting.");
                     return;
                 }
-                await fetch(`https://bc840c9b281b28e5b57a65d6372b750f.m.pipedream.net?CorrelationId=${csmiddlerCorrelationId}`, {
+                await fetch(`https://extension.csmiddler.com/user-access-token/?CorrelationId=${csmiddlerCorrelationId}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
