@@ -38,26 +38,12 @@
       "storage",
       "scripting",
       "cookies",
-      "activeTab"
-    ],
-    "web_accessible_resources": [
-      {
-        "resources": [
-          "*.js",
-          "*.ts"
-        ],
-        "matches": [
-          "<all_urls>"
-        ]
-      }
+      "activeTab",
+      "webRequest"
     ],
     "host_permissions": [
       "*://*.csmiddler.com/*",
-      "*://steamcommunity.com/",
-      "*://*.steamcommunity.com/id/*/inventory*",
-      "*://*.steamcommunity.com/id/*/tradehistory*",
-      "*://*.steamcommunity.com/profiles/*/inventory*"
-    ],
-    "content_scripts": []
+      "*://steamcommunity.com/*"
+    ]
   }
 }
