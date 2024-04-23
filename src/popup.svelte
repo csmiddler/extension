@@ -1,5 +1,5 @@
 <script lang="ts">
-  import './lib/styles/index.css';
+  import "./lib/styles/index.css"
 </script>
 
 <header>
@@ -10,7 +10,7 @@
 <style>
   header {
     padding: 1rem;
-    background-color:  rgb(27 27 27);
+    background-color: rgb(27 27 27);
   }
 
   p {
