@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: rgb(36 36 36);
+  color: rgb(255 255 255);
+  width: 400px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
