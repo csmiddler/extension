@@ -1,11 +1,16 @@
 <script lang="ts">
   import "./lib/styles/index.css"
+
+  import Logo from "data-base64:~images/logo.svg"
 </script>
 
 <header>
-  <h1>CSMiddler</h1>
+  <img src={Logo} alt="CSM Logo" />
 </header>
-<p>Settings</p>
+
+<section>
+  <h1>Settings</h1>
+</section>
 
 <style>
   header {
@@ -13,7 +18,11 @@
     background-color: rgb(27 27 27);
   }
 
-  p {
-    padding: 0 1rem;
+  img {
+    height: 2.5rem;
+  }
+
+  section {
+    padding: 1rem;
   }
 </style>
