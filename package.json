@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "displayName": "CSMiddler Helper",
   "description": "Extension for CSMiddler.com users",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/csmiddler/extension.git"
