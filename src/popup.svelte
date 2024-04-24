@@ -2,6 +2,9 @@
   import "./lib/styles/index.css"
 
   import Logo from "data-base64:~images/logo.svg"
+
+  import Switch from "~lib/components/Switch.svelte"
+  import { serverSideAccessToken } from "~lib/stores/serverSideAccessToken"
 </script>
 
 <header>
@@ -10,6 +13,10 @@
 
 <section>
   <h1>Settings</h1>
+  <Switch
+    label="Server-side access token"
+    name="serveSide"
+    bind:checked={$serverSideAccessToken} />
 </section>
 
 <style>
