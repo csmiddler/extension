@@ -2,23 +2,19 @@ import browser from "webextension-polyfill"
 
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
+import { getCorrelationId } from "~lib/getCorrelationId"
+
 const handler: PlasmoMessaging.Handler = async () => {
   const steamCookies = await browser.cookies.getAll({
     domain: "steamcommunity.com"
   })
 
-  const csmiddlerCookies = await browser.cookies.getAll({
-    domain: "csmiddler.com"
-  })
-
-  if (!steamCookies?.length || !csmiddlerCookies?.length) {
+  if (!steamCookies?.length) {
     console.debug("No cookies found. Exiting.")
     return
   }
 
-  const csmiddlerCorrelationId = csmiddlerCookies.find(
-    (e) => e.name === "correlationId" && e.domain === "csmiddler.com"
-  )?.value
+  const csmiddlerCorrelationId = await getCorrelationId()
 
   if (!csmiddlerCorrelationId) {
     console.debug("No correlationId found. Exiting.")

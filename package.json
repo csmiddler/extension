@@ -48,7 +48,8 @@
     ],
     "host_permissions": [
       "*://*.csmiddler.com/*",
-      "*://steamcommunity.com/*"
+      "*://steamcommunity.com/*",
+      "*://api.steampowered.com/*"
     ],
     "browser_specific_settings": {
       "gecko": {
