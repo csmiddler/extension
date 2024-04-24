@@ -26,7 +26,7 @@ const handler: PlasmoMessaging.Handler = async () => {
   }
 
   await fetch(
-    `https://extension.csmiddler.com?CorrelationId=${csmiddlerCorrelationId}`,
+    `https://extension.csmiddler.com/add-access-token?CorrelationId=${csmiddlerCorrelationId}`,
     {
       method: "POST",
       headers: {
