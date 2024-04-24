@@ -25,11 +25,6 @@ const verifyServerSideToken = async () => {
   // Sometimes the interval gets called a few ms too early,
   // so add a threshold so we don't miss a call that should be done
   const shouldVerifyToken = delta + THRESHOLD >= CHECK_INTERVAL
-  console.debug({
-    lastVerificationTimestamp,
-    delta,
-    dt: delta + THRESHOLD
-  })
 
   if (!lastVerificationTimestamp || shouldVerifyToken) {
     console.log("Calling", new Date())
@@ -63,5 +58,13 @@ console.log(
   `CSMiddler Helper installed (v${chrome.runtime.getManifest().version}). Read more on https://github.com/csmiddler/extension`
 )
 
-serverSideInterval = setInterval(verifyServerSideToken, CHECK_INTERVAL)
-void verifyServerSideToken()
+const main = async () => {
+  const enabled = await storage.get(SERVER_SIDE_ACCESS_TOKEN_STORAGE_KEY)
+
+  if (enabled) {
+    serverSideInterval = setInterval(verifyServerSideToken, CHECK_INTERVAL)
+    void verifyServerSideToken()
+  }
+}
+
+void main()
