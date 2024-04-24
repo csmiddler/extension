@@ -1,15 +1,17 @@
+import browser from "webextension-polyfill"
+
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
 const handler: PlasmoMessaging.Handler = async () => {
-  const steamCookies = await chrome.cookies.getAll({
+  const steamCookies = await browser.cookies.getAll({
     domain: "steamcommunity.com"
   })
 
-  const csmiddlerCookies = await chrome.cookies.getAll({
+  const csmiddlerCookies = await browser.cookies.getAll({
     domain: "csmiddler.com"
   })
 
-  if (!steamCookies.length || !csmiddlerCookies.length) {
+  if (!steamCookies?.length || !csmiddlerCookies?.length) {
     console.debug("No cookies found. Exiting.")
     return
   }

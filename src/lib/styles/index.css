@@ -4,6 +4,7 @@ body {
   background: rgb(36 36 36);
   color: rgb(255 255 255);
   width: 400px;
+  font-family: system-ui, sans-serif;
 }
 
 h1 {

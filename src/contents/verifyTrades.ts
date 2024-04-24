@@ -27,7 +27,6 @@ const verifyServerSideToken = async () => {
   const shouldVerifyToken = delta + THRESHOLD >= CHECK_INTERVAL
 
   if (!lastVerificationTimestamp || shouldVerifyToken) {
-    console.log("Calling", new Date())
     void sendToBackground({
       name: "verifyTrades"
     })
@@ -37,7 +36,11 @@ const verifyServerSideToken = async () => {
 
 /* Watch for changes made by the user for the setting of the "Server side access token" toggle */
 storage.watch({
-  [SERVER_SIDE_ACCESS_TOKEN_STORAGE_KEY]: ({ newValue }) => {
+  [SERVER_SIDE_ACCESS_TOKEN_STORAGE_KEY]: ({ newValue, oldValue }) => {
+    if (newValue === oldValue) {
+      return
+    }
+
     if (newValue) {
       // The user turned the option on, so make a call and setup a fresh new interval
       void verifyServerSideToken()
@@ -62,6 +65,7 @@ const main = async () => {
   const enabled = await storage.get(SERVER_SIDE_ACCESS_TOKEN_STORAGE_KEY)
 
   if (enabled) {
+    clearInterval(serverSideInterval)
     serverSideInterval = setInterval(verifyServerSideToken, CHECK_INTERVAL)
     void verifyServerSideToken()
   }
