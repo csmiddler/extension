@@ -1,0 +1,9 @@
+a {
+  margin-block: 12px;
+  text-decoration: none;
+  color: rgb(210, 210, 210);
+  padding: 6px;
+  border: 1px solid rgb(230 138 0);
+  background-color: rgb(27, 27, 27);
+  border-radius: 3px;
+}
