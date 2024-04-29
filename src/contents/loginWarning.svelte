@@ -4,7 +4,11 @@
 
   export const config: PlasmoCSConfig = {
     matches: ["<all_urls>"],
-    exclude_matches: ["*://*.steamcommunity.com/*", "*://*.steampowered.com/*"],
+    exclude_matches: [
+      "*://*.steamcommunity.com/*",
+      "*://*.steampowered.com/*",
+      "*://*.steam.tv/*"
+    ],
     all_frames: true
   }
 
