@@ -1,30 +1,10 @@
-import browser, { storage } from "webextension-polyfill"
-
 import type { PlasmoMessaging } from "@plasmohq/messaging"
 
 import { getCorrelationId } from "~lib/getCorrelationId"
+import { getSteamLoginCookie } from "~lib/getSteamLoginCookie"
 
 const handler: PlasmoMessaging.Handler = async () => {
-  const steamCookies = await browser.cookies.getAll({
-    domain: "steamcommunity.com"
-  })
-
-  if (!steamCookies?.length) {
-    console.debug("No cookies found. Exiting")
-    return
-  }
-
-  const steamLoginCookie = steamCookies.find(
-    (cookie) => cookie.name === "steamLoginSecure"
-  )
-
-  if (!steamLoginCookie) {
-    console.debug("No steamLoginSecure cookie found. Exiting")
-    return
-  }
-
-  const cookieValue = decodeURI(steamLoginCookie.value)
-  const [, token] = cookieValue.split("||")
+  const { token } = await getSteamLoginCookie()
 
   if (!token) {
     console.debug("Could not extract token. Exiting")

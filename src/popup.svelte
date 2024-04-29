@@ -22,9 +22,9 @@
   </div>
   <div>
     <Switch
-        label="Client-side access token"
-        name="clientSide"
-        bind:checked={$clientSideAccessToken}/>
+      label="Client-side access token"
+      name="clientSide"
+      bind:checked={$clientSideAccessToken} />
   </div>
 </section>
 
