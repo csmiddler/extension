@@ -99,10 +99,12 @@
     observer = new MutationObserver((mutationList, observer) => {
       const active = mutationList.find((mutation) => {
         if (mutation.type === "attributes") {
-          return mutation.target.classList.contains("activeInfo")
+          return (mutation.target as HTMLElement).classList.contains(
+            "activeInfo"
+          )
         }
       })
-      assetId = getAssetId(active.target.id)
+      assetId = getAssetId((active.target as HTMLElement).id)
     })
 
     observer.observe(document.getElementById("inventories"), {
