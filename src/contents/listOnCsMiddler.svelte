@@ -3,7 +3,7 @@
   import type { PlasmoCSConfig, PlasmoGetInlineAnchorList } from "plasmo"
 
   export const config: PlasmoCSConfig = {
-    matches: ["*://*.steamcommunity.com/profiles/*/inventory*"],
+    matches: ["*://*.steamcommunity.com/profiles/*/inventory*", "*://*.steamcommunity.com/id/*/inventory*"],
     all_frames: true
   }
 

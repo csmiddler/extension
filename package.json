@@ -16,6 +16,8 @@
   "scripts": {
     "dev": "plasmo dev",
     "dev:firefox": "plasmo dev --target=firefox-mv2",
+    "build:firefox": "pnpm build --target=firefox-mv2 --zip",
+    "build:chrome": "pnpm build --zip",
     "build": "plasmo build",
     "package": "plasmo package",
     "lint": "prettier --check .",
@@ -50,11 +52,6 @@
       "*://*.csmiddler.com/*",
       "*://steamcommunity.com/*",
       "*://api.steampowered.com/*"
-    ],
-    "browser_specific_settings": {
-      "gecko": {
-        "id": "csmiddler@example.com"
-      }
-    }
+    ]
   }
 }
