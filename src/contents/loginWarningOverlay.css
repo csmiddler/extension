@@ -1,0 +1,17 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  max-width: 50rem;
+  margin-inline: auto;
+  border: 3px solid red;
+  padding: 2rem;
+}
