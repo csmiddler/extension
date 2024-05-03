@@ -1,6 +1,6 @@
 {
   "name": "extension",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "displayName": "CSMiddler Helper",
   "description": "Extension for CSMiddler.com users",
   "repository": {
@@ -48,13 +48,17 @@
       "storage",
       "scripting",
       "cookies",
-      "activeTab",
-      "webRequest"
+      "activeTab"
     ],
     "host_permissions": [
       "*://*.csmiddler.com/*",
       "*://steamcommunity.com/*",
       "*://api.steampowered.com/*"
-    ]
+    ],
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "csmiddler-extension-helper"
+      }
+    }
   }
 }

@@ -3,6 +3,7 @@
   import type { PlasmoCSConfig, PlasmoGetInlineAnchorList } from "plasmo"
 
   export const config: PlasmoCSConfig = {
+    css: ["font.css"],
     matches: [
       "*://*.steamcommunity.com/profiles/*/inventory*",
       "*://*.steamcommunity.com/id/*/inventory*"
@@ -127,6 +128,7 @@
 </script>
 
 {#if ownerId && userId && ownerId === userId}
-  <a href="https://csmiddler.com/u/sell?selected={assetId}" target="_blank"
-    >List on CSMiddler</a>
+  <a href="https://csmiddler.com/u/sell?selected={assetId}" target="_blank">
+    List on CSMiddler
+  </a>
 {/if}
