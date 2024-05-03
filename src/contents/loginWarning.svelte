@@ -4,6 +4,7 @@
 
   export const config: PlasmoCSConfig = {
     matches: ["<all_urls>"],
+    css: ["font.css"],
     exclude_matches: [
       "*://*.steamcommunity.com/*",
       "*://*.steampowered.com/*",
@@ -96,15 +97,18 @@
 {#if show}
   <div class="modal">
     <div class="message">
-      <h1>Danger! This is not an official Valve website.</h1>
-      <p>
-        Logging into this site may result in your Steam account being
-        compromised.
-      </p>
-      <p>
-        It is recommended that you close this tab and never return to this site.
-      </p>
-      <button on:click={hide}>Continue anyways</button>
+      <div class="text">
+        <h1>This is a potential scam-website</h1>
+        <p>
+          CSMiddler has detected that this website is trying to impersonate
+          Steam and has therefore blocked it for you. We do not recommend
+          visiting or logging into this website. We have identified that this
+          webpage looks very similar to an official Steam page, but it is not
+          owned or operated by Steam.
+        </p>
+      </div>
+      <a href="https://csmiddler.com/">Go to CSMiddler.com instead</a>
+      <button on:click={hide}>I want to visit the site anyway.</button>
     </div>
   </div>
 {/if}
