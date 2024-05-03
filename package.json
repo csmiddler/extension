@@ -48,8 +48,7 @@
       "storage",
       "scripting",
       "cookies",
-      "activeTab",
-      "webRequest"
+      "activeTab"
     ],
     "host_permissions": [
       "*://*.csmiddler.com/*",
