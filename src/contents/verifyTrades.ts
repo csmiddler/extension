@@ -10,7 +10,8 @@ export const config: PlasmoCSConfig = {
   all_frames: true
 }
 
-const STORAGE_KEY = "LAST_SERVERSIDE_VERIFICATION"
+export const LAST_SERVERSIDE_VERIFICATION_STORAGE_KEY =
+  "LAST_SERVERSIDE_VERIFICATION"
 const CHECK_INTERVAL = 3 * 60 * 60 * 1000
 const THRESHOLD = 1000
 let serverSideInterval: NodeJS.Timeout
@@ -19,7 +20,7 @@ const storage = new Storage()
 
 const verifyServerSideToken = async () => {
   const lastVerificationTimestamp =
-    (await storage.get<number>(STORAGE_KEY)) ?? 0
+    (await storage.get<number>(LAST_SERVERSIDE_VERIFICATION_STORAGE_KEY)) ?? 0
   const now = Date.now()
   const delta = now - lastVerificationTimestamp
   // Sometimes the interval gets called a few ms too early,
@@ -30,7 +31,7 @@ const verifyServerSideToken = async () => {
     void sendToBackground({
       name: "verifyTrades"
     })
-    await storage.set(STORAGE_KEY, now)
+    await storage.set(LAST_SERVERSIDE_VERIFICATION_STORAGE_KEY, now)
   }
 }
 
