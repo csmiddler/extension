@@ -25,7 +25,8 @@ async function handleTradeItems() {
     await processTradeItems(
       items_to_give,
       `inventory_${UserYou.strSteamId}_730_2`,
-      "item730_2"
+      "item730_2",
+      true
     )
   }
 
@@ -35,18 +36,37 @@ async function handleTradeItems() {
     await processTradeItems(
       items_to_receive,
       `inventory_${UserThem.strSteamId}_730_2`,
-      "item730_2"
+      "item730_2",
+      false
     )
   }
 
   finalizeTradeSetup()
 }
 
-async function processTradeItems(items, inventorySelector, assetIdPrefix) {
-  const inventory = await waitForElement(inventorySelector)
+async function processTradeItems(
+  items: string[],
+  inventorySelector: string,
+  assetIdPrefix: string,
+  isGive: boolean
+) {
+  await waitForElement(inventorySelector)
+
   items.forEach((assetId) => {
     const itemElement = document.getElementById(`${assetIdPrefix}_${assetId}`)
-    if (itemElement) MoveItemToTrade(itemElement)
+    if (itemElement) {
+      MoveItemToTrade(itemElement)
+    } else {
+      if (isGive) {
+        window.confirm(
+          "We tried to add an item to the trade from your inventory, but it does not exist in your inventory."
+        )
+      } else {
+        window.confirm(
+          "We tried to add an item that you should receive, but it does not exist in the other user's inventory. Be careful."
+        )
+      }
+    }
   })
 }
 
@@ -56,8 +76,14 @@ function finalizeTradeSetup() {
   UserYou.bReady = true
   GTradeStateManager.ToggleReady(true)
   UpdateReadyButtons()
-  document.getElementById("notready_tradechanged_message").style.display =
-    "none"
+
+  const btnContinue = document.getElementsByClassName(
+    "btn_green_steamui btn_medium"
+  )
+
+  if (btnContinue && btnContinue?.[0]) {
+    ;(btnContinue[0] as HTMLElement).click()
+  }
 }
 
 async function waitForElement(selector) {
