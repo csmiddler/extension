@@ -41,7 +41,9 @@ async function handleTradeItems() {
     )
   }
 
-  finalizeTradeSetup()
+  if (items_to_give || items_to_receive) {
+    finalizeTradeSetup()
+  }
 }
 
 async function processTradeItems(
