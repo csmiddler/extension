@@ -5,18 +5,28 @@
 </script>
 
 <label for={name}>
-  {#if label}
-    {label}
-  {/if}
+  <span>
+    {#if label}
+      {label}
+    {/if}
+    <slot />
+  </span>
   <input id={name} {name} type="checkbox" role="switch" bind:checked />
 </label>
 
 <style>
   label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     cursor: pointer;
+    font-family: "Satoshi";
+    font-size: 1rem;
+    font-weight: 500;
   }
 
   input {
+    flex-shrink: 0;
     --transtion: 0.2s ease-in-out;
 
     transition:

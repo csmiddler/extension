@@ -9,7 +9,8 @@ export const config: PlasmoCSConfig = {
   matches: ["*://steamcommunity.com/*/tradeoffers"]
 }
 
-const STORAGE_KEY = "LAST_CLIENTSIDE_VERIFICATION"
+export const LAST_CLIENTSIDE_VERIFICATION_STORAGE_KEY =
+  "LAST_CLIENTSIDE_VERIFICATION"
 const CHECK_INTERVAL = 3 * 60 * 1000
 const THRESHOLD = 1000
 let clientSideInterval: NodeJS.Timeout
@@ -17,7 +18,7 @@ const storage = new Storage()
 
 const getTradeOffers = async () => {
   const lastVerificationTimestamp =
-    (await storage.get<number>(STORAGE_KEY)) ?? 0
+    (await storage.get<number>(LAST_CLIENTSIDE_VERIFICATION_STORAGE_KEY)) ?? 0
   const now = Date.now()
   const delta = now - lastVerificationTimestamp
   // Sometimes the interval gets called a few ms too early,
@@ -28,7 +29,7 @@ const getTradeOffers = async () => {
     void sendToBackground({
       name: "getTradeOffers"
     })
-    await storage.set(STORAGE_KEY, now)
+    await storage.set(LAST_CLIENTSIDE_VERIFICATION_STORAGE_KEY, now)
   }
 }
 

@@ -1,5 +1,6 @@
 <script lang="ts">
   import "./lib/styles/index.css"
+  import "./contents/font.css"
 
   import Logo from "data-base64:~images/logo.svg"
 
@@ -13,18 +14,29 @@
 </header>
 
 <section>
-  <h1>Settings</h1>
   <div>
     <Switch
-      label="Server-side access token"
-      name="serveSide"
-      bind:checked={$serverSideAccessToken} />
+      label="Fastest verification of trades"
+      name="serverSide"
+      bind:checked={$serverSideAccessToken}>
+      <p>
+        Before activating this, please understand the risks outlined in our
+        help-center.
+        <a class="redA" href="TODO" target="_blank">Learn more.</a>
+      </p>
+    </Switch>
   </div>
   <div>
     <Switch
-      label="Client-side access token"
+      label="Client verification of trades"
       name="clientSide"
-      bind:checked={$clientSideAccessToken} />
+      bind:checked={$clientSideAccessToken}>
+      <p>
+        Risk-free, but for this to efficiently work, both the seller and buyer
+        have to use it.
+        <a href="TODO" target="_blank">Learn more.</a>
+      </p>
+    </Switch>
   </div>
 </section>
 
@@ -40,13 +52,28 @@
 
   section {
     padding: 1rem;
-  }
-
-  h1 {
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
   }
 
   div + div {
     margin-top: 0.5rem;
+  }
+
+  section div p {
+    margin-top: 3px;
+    margin-bottom: 0px;
+    font-family: "Satoshi";
+    color: rgb(158 158 158);
+    font-size: 0.8rem;
+  }
+
+  section div a {
+    color: rgb(255, 255, 255);
+  }
+
+  .redA {
+    color: rgb(255, 63, 63);
   }
 </style>

@@ -1,0 +1,30 @@
+name: "CI"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+  # Build if requested manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache pnpm modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v3
+        with:
+          version: latest
+          run_install: true
+      - uses: actions/setup-node@v4
+        with:
+          cache: "pnpm"
+      - run: pnpm lint

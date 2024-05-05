@@ -1,6 +1,6 @@
 {
   "name": "extension",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "displayName": "CSMiddler Helper",
   "description": "Extension for CSMiddler.com users",
   "repository": {
@@ -16,10 +16,14 @@
   "scripts": {
     "dev": "plasmo dev",
     "dev:firefox": "plasmo dev --target=firefox-mv2",
+    "build:firefox": "pnpm build --target=firefox-mv2 --zip",
+    "build:chrome": "pnpm build --zip",
     "build": "plasmo build",
     "package": "plasmo package",
     "lint": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check": "svelte-check",
+    "check:watch": "svelte-check --watch"
   },
   "dependencies": {
     "@plasmohq/messaging": "^0.6.2",
@@ -36,6 +40,7 @@
     "@types/webextension-polyfill": "^0.10.7",
     "prettier": "3.2.4",
     "prettier-plugin-svelte": "^3.2.3",
+    "svelte-check": "^3.7.0",
     "typescript": "5.3.3"
   },
   "manifest": {
@@ -43,8 +48,7 @@
       "storage",
       "scripting",
       "cookies",
-      "activeTab",
-      "webRequest"
+      "activeTab"
     ],
     "host_permissions": [
       "*://*.csmiddler.com/*",
@@ -53,7 +57,7 @@
     ],
     "browser_specific_settings": {
       "gecko": {
-        "id": "csmiddler@example.com"
+        "id": "csmiddler-extension-helper"
       }
     }
   }

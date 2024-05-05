@@ -3,7 +3,11 @@
   import type { PlasmoCSConfig, PlasmoGetInlineAnchorList } from "plasmo"
 
   export const config: PlasmoCSConfig = {
-    matches: ["*://*.steamcommunity.com/profiles/*/inventory*"],
+    css: ["font.css"],
+    matches: [
+      "*://*.steamcommunity.com/profiles/*/inventory*",
+      "*://*.steamcommunity.com/id/*/inventory*"
+    ],
     all_frames: true
   }
 
@@ -99,10 +103,12 @@
     observer = new MutationObserver((mutationList, observer) => {
       const active = mutationList.find((mutation) => {
         if (mutation.type === "attributes") {
-          return mutation.target.classList.contains("activeInfo")
+          return (mutation.target as HTMLElement).classList.contains(
+            "activeInfo"
+          )
         }
       })
-      assetId = getAssetId(active.target.id)
+      assetId = getAssetId((active.target as HTMLElement).id)
     })
 
     observer.observe(document.getElementById("inventories"), {
@@ -122,6 +128,7 @@
 </script>
 
 {#if ownerId && userId && ownerId === userId}
-  <a href="https://csmiddler.com/u/sell?selected={assetId}" target="_blank"
-    >List on CSMiddler</a>
+  <a href="https://csmiddler.com/u/sell?selected={assetId}" target="_blank">
+    List on CSMiddler
+  </a>
 {/if}
