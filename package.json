@@ -46,9 +46,7 @@
   "manifest": {
     "permissions": [
       "storage",
-      "scripting",
-      "cookies",
-      "activeTab"
+      "cookies"
     ],
     "host_permissions": [
       "*://*.csmiddler.com/*",
