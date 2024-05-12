@@ -1,6 +1,5 @@
 <script lang="ts">
-  import "./lib/styles/index.css"
-  import "./contents/font.css"
+  import "~lib/styles/index.css"
 
   import Logo from "data-base64:~images/logo.svg"
 
